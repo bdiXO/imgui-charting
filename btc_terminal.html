@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BTC · Pro Flow</title>
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background-color: #06080f; 
+            overflow: hidden; 
+        }
+        /* Make the C++ canvas stretch to the edges of the window */
+        canvas.emscripten { 
+            display: block; 
+            width: 100vw; 
+            height: 100vh; 
+            border: 0px none; 
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+    
+    <script type='text/javascript'>
+      var Module = {
+        canvas: (function() {
+          var canvas = document.getElementById('canvas');
+          canvas.addEventListener("webglcontextlost", function(e) { alert('WebGL context lost. You will need to reload the page.'); e.preventDefault(); }, false);
+          return canvas;
+        })()
+      };
+    </script>
+    
+    <script async type="text/javascript" src="btc_terminal.js"></script>
+</body>
+</html>
